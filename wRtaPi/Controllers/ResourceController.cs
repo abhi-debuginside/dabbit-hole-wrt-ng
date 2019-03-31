@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -48,7 +49,7 @@ namespace wRtaPi.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
-           
+
         }
 
         // DELETE: api/ApiWithActions/5

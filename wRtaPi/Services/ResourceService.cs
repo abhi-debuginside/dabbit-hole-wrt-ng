@@ -53,8 +53,8 @@ namespace wRtaPi.Services
                 Id = 1122,
                 Description = "testdesc",
                 Name = "test",
-                XAxis = "123.22",
-                YAxis = "222.32"
+                Longitude = "123.22",
+                Latitude = "222.32"
             };
             Create(res);
         }

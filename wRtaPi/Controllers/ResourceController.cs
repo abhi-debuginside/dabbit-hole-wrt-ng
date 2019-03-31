@@ -12,11 +12,11 @@ namespace wRtaPi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ResourceApiController : ControllerBase
+    public class ResourceController : ControllerBase
     {
 
         private ResourceService _resourceService;
-        public ResourceApiController(ResourceService resourceService)
+        public ResourceController(ResourceService resourceService)
         {
             _resourceService = resourceService;
         }

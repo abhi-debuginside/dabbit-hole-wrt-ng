@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -24,25 +26,38 @@ namespace wRtaPi.Controllers
 
         // GET: api/ResourceApi
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<WResource> Get()
         {
-            var data = _resourceService.GetAll().Select(x => JsonConvert.SerializeObject(x));
-            return data;
+          return  _resourceService.GetAll();
         }
 
         // GET: api/ResourceApi/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(long id)
+        public WResource Get(string id)
         {
-            var data = JsonConvert.SerializeObject(_resourceService.GetById(id));
-            return data;
+          return  _resourceService.GetById(id);
         }
 
         // POST: api/ResourceApi
         [HttpPost]
-        public void Post(WResource res)
+        public IActionResult Post(WResource res)
         {
-            _resourceService.Create(res);
+            try
+            {
+                if (string.IsNullOrEmpty(res.Id))
+                {
+                    _resourceService.Create(res); 
+                }
+                else
+                {
+                    _resourceService.Update(res);
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest();
+            }
+            return this.Ok();
         }
 
         // PUT: api/ResourceApi/5
@@ -54,7 +69,7 @@ namespace wRtaPi.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public void Delete(string id)
         {
             _resourceService.Remove(id);
         }

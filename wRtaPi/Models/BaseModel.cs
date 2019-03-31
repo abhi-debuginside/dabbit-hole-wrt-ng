@@ -10,9 +10,5 @@ namespace wRtaPi.Models
 {
     public class BaseModel
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.Int64)]
-        [JsonProperty("name")]
-        public long Id { get; set; }
     }
 }

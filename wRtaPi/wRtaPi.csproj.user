@@ -9,5 +9,20 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <GoogleAppEnginePublishPromote>True</GoogleAppEnginePublishPromote>
+    <GoogleAppEnginePublishOpenWebsite>True</GoogleAppEnginePublishOpenWebsite>
+    <GoogleCloudPublishConfiguration>Release</GoogleCloudPublishConfiguration>
+    <GoogleKubernetesEnginePublishDeploymentName>w-rta-pi</GoogleKubernetesEnginePublishDeploymentName>
+    <GoogleKubernetesEnginePublishVersion>20190330t142206</GoogleKubernetesEnginePublishVersion>
+    <GoogleKubernetesEnginePublishReplicas>3</GoogleKubernetesEnginePublishReplicas>
+    <GoogleKubernetesEnginePublishExposeService>True</GoogleKubernetesEnginePublishExposeService>
+    <GoogleKubernetesEnginePublishExposePublicService>True</GoogleKubernetesEnginePublishExposePublicService>
+    <GoogleKubernetesEnginePublishOpenWebsite>True</GoogleKubernetesEnginePublishOpenWebsite>
+    <GoogleComputeEnginePublishOpenWebsite>True</GoogleComputeEnginePublishOpenWebsite>
+    <GoogleComputeEnginePublishLaunchRemoteDebugger>False</GoogleComputeEnginePublishLaunchRemoteDebugger>
+    <GoogleComputeEnginePublishSiteName>Default Web Site</GoogleComputeEnginePublishSiteName>
+    <GoogleCloudPublishChoice>Gke</GoogleCloudPublishChoice>
+    <GoogleKubernetesEnginePublishClusterId>https://container.googleapis.com/v1/projects/angularattack2k19/zones/asia-south1-a/clusters/standard-cluster-1</GoogleKubernetesEnginePublishClusterId>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
 </Project>

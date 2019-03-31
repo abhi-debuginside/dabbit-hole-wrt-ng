@@ -14,7 +14,7 @@ namespace wRtaPi.Repository
         public DataRepository(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("ResourceDb"));
-            var database = client.GetDatabase("ResourceDb");
+            var database = client.GetDatabase("WResourceDb");
             _resourceModel = database.GetCollection<WResource>("WResource");
         }
 

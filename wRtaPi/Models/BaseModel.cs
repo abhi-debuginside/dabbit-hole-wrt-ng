@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace wRtaPi.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.Int64)]
+        [JsonProperty("name")]
         public long Id { get; set; }
     }
 }

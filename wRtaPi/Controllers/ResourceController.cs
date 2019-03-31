@@ -39,9 +39,9 @@ namespace wRtaPi.Controllers
 
         // POST: api/ResourceApi
         [HttpPost]
-        public void Post([FromBody] WResource res)
+        public void Post(WResource res)
         {
-            _resourceService.Update(res);
+            _resourceService.Create(res);
         }
 
         // PUT: api/ResourceApi/5

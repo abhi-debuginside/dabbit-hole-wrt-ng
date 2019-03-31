@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -12,48 +15,61 @@ namespace wRtaPi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ResourceApiController : ControllerBase
+    public class ResourceController : ControllerBase
     {
 
         private ResourceService _resourceService;
-        public ResourceApiController(ResourceService resourceService)
+        public ResourceController(ResourceService resourceService)
         {
             _resourceService = resourceService;
         }
 
         // GET: api/ResourceApi
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<WResource> Get()
         {
-            var data = _resourceService.GetAll().Select(x => JsonConvert.SerializeObject(x));
-            return data;
+          return  _resourceService.GetAll();
         }
 
         // GET: api/ResourceApi/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(long id)
+        public WResource Get(string id)
         {
-            var data = JsonConvert.SerializeObject(_resourceService.GetById(id));
-            return data;
+          return  _resourceService.GetById(id);
         }
 
         // POST: api/ResourceApi
         [HttpPost]
-        public void Post([FromBody] WResource res)
+        public IActionResult Post(WResource res)
         {
-            _resourceService.Update(res);
+            try
+            {
+                if (string.IsNullOrEmpty(res.Id))
+                {
+                    _resourceService.Create(res); 
+                }
+                else
+                {
+                    _resourceService.Update(res);
+                }
+            }
+            catch (Exception ex)
+            {
+                return this.BadRequest();
+            }
+            return this.Ok();
         }
 
         // PUT: api/ResourceApi/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
-           
+
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public void Delete(string id)
         {
             _resourceService.Remove(id);
         }

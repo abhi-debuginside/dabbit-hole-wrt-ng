@@ -14,7 +14,7 @@ namespace wRtaPi.Repository
         public DataRepository(IConfiguration config)
         {
             var client = new MongoClient(config.GetConnectionString("ResourceDb"));
-            var database = client.GetDatabase("ResourceDb");
+            var database = client.GetDatabase("WResourceDb1");
             _resourceModel = database.GetCollection<WResource>("WResource");
         }
 
@@ -23,7 +23,7 @@ namespace wRtaPi.Repository
             return _resourceModel.Find(x => true).ToList();
         }
 
-        public WResource Get(long id)
+        public WResource Get(string id)
         {
             return _resourceModel.Find<WResource>(res => res.Id == id).FirstOrDefault();
         }
@@ -44,7 +44,7 @@ namespace wRtaPi.Repository
             _resourceModel.DeleteOne(res => res.Id == resource.Id);
         }
 
-        public void Remove(long id)
+        public void Remove(string id)
         {
             _resourceModel.DeleteOne(res => res.Id == id);
         }

@@ -22,11 +22,17 @@ namespace wRtaPi
             Configuration = configuration;
         }
 
+
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             return new AutofacServiceProvider(ConfigureAutofac(services));
@@ -40,6 +46,7 @@ namespace wRtaPi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseMvc();
         }
 

@@ -20,7 +20,7 @@ namespace wRtaPi.Services
         {
             return _dataRepository.Get();
         }
-        public WResource GetById(long id)
+        public WResource GetById(string id)
         {
             return _dataRepository.Get(id);
         }
@@ -41,7 +41,7 @@ namespace wRtaPi.Services
             _dataRepository.Remove(res);
         }
 
-        public void Remove(long id)
+        public void Remove(string id)
         {
             _dataRepository.Remove(id);
         }
@@ -50,11 +50,11 @@ namespace wRtaPi.Services
         {
             var res = new WResource()
             {
-                Id = 1122,
+                Id = "1122",
                 Description = "testdesc",
                 Name = "test",
-                XAxis = "123.22",
-                YAxis = "222.32"
+                Longitude = "123.22",
+                Latitude = "222.32"
             };
             Create(res);
         }
